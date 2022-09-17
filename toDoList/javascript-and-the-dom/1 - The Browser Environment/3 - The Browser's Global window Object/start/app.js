@@ -1,7 +1,7 @@
 const headline = document.getElementById('headline');
-const buttonMain = document.getElementById('btn-main');
-const inputValue = document.getElementById('main');
+const buttonCreate = document.getElementById('btn-main');
 const buttonToggle = document.querySelector('.btn-toggle');
+const buttonRemove = document.querySelector('.btn-remove');
 
 
 buttonToggle.addEventListener('click', () => {
@@ -15,7 +15,22 @@ buttonToggle.addEventListener('click', () => {
   }
 });
 
-buttonMain.addEventListener('click', () => {
-  headline.textContent = inputValue.value;  
+buttonCreate.addEventListener('click', () => {
+  const input = document.querySelector('.input-main');
+  const item = document.createElement('li');
+  const list = document.querySelector('ul');
 
+  list.insertAdjacentHTML(
+    'beforeend',
+    `<li>${input.value}</li>`
+  );
+
+  // item.textContent = input.value;
+  // list.append(item);
+  input.value = '';
 })
+
+buttonRemove.addEventListener('click', () => {
+  const lastItem = document.querySelector('li:last-child');
+  lastItem.remove();
+});
